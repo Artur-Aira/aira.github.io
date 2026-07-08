@@ -198,108 +198,7 @@
     });
   });
 
-  /* ---------- Project Modal (как на showrun.pro) ---------- */
-  const modal = document.getElementById('projectModal');
-  const modalOverlay = document.getElementById('modalOverlay');
-  const modalClose = document.getElementById('modalClose');
-  const modalImage = document.getElementById('modalImage');
-  const modalEyebrow = document.getElementById('modalEyebrow');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalDescription = document.getElementById('modalDescription');
-  const modalTags = document.getElementById('modalTags');
-
-  const projectsData = {
-    1: {
-      title: 'Showrun Production',
-      eyebrow: '01 / Showrun Production',
-      description: 'Создание POS-материалов для музыкального тура исполнителя Элджей. Разработка креативов для социальных сетей, наружной рекламы и оформление сайта компании.',
-      tags: ['Тур Элджей', 'Наружная реклама', 'Сайт'],
-      image: 'assets/case_13.png'
-    },
-    2: {
-      title: 'Olimpbet Fighting',
-      eyebrow: '02 / Olimpbet Fighting',
-      description: 'Полная упаковка бренда. Создание афиш, постеров, инфографики для социальных сетей и рекламных агрегаторов. Разработка обложек для видео и motion-графики для историй в социальных сетях.',
-      tags: ['Брендинг', '1500+ креативов', 'Motion'],
-      image: 'assets/case_16.png'
-    },
-    3: {
-      title: 'ACA',
-      eyebrow: '03 / ACA',
-      description: 'Создание афиш, постеров, инфографики для социальных сетей и рекламных агрегаторов. Работа над 4 стадионными турнирами и 15+ обложками за 3 месяца.',
-      tags: ['Absolute Championship Akhmat', '4 турнира', '15+ обложек'],
-      image: 'assets/case_18.png'
-    },
-    4: {
-      title: 'Force Fighting Championship',
-      eyebrow: '04 / Force Fighting',
-      description: 'Создание логотипа, подбор фирменных цветов. Разработка афиш, постеров, инфографики для социальных сетей. Создание спортивной формы и POS-материалов для стадионных ивентов. 50+ креативов, 2 стадионных турнира.',
-      tags: ['Логотип', 'Форма', 'Постеры', '50+ креативов'],
-      image: 'assets/case_14.png'
-    },
-    5: {
-      title: 'Armat Fight Show',
-      eyebrow: '05 / Armat Fight Show',
-      description: 'Полная упаковка бренда первого профессионального MMA-промоушена в Армении. Создание афиш, постеров, фирменного мерча, POS-материалов для стадионных ивентов и motion-графики для прямых эфиров в социальных сетях.',
-      tags: ['Первый MMA-промоушен в Армении', 'Брендинг', 'Motion'],
-      image: 'assets/case_19.png'
-    },
-    6: {
-      title: 'Другие работы',
-      eyebrow: '06 / Другие работы',
-      description: 'Разработка визуальной идентичности для бренда Lit Energy. Создание креативов для Чемпионата мира WPF × WRPF. Оформление и визуальный стиль для СМИ «Сечка».',
-      tags: ['Lit Energy', 'WPF × WRPF', 'Сечка'],
-      image: 'assets/case_20.png'
-    }
-  };
-
-  function openModal(projectId) {
-    const data = projectsData[projectId];
-    if (!data) return;
-
-    modalImage.src = data.image;
-    modalImage.alt = data.title;
-    modalEyebrow.textContent = data.eyebrow;
-    modalTitle.textContent = data.title;
-    modalDescription.textContent = data.description;
-    
-    modalTags.innerHTML = '';
-    data.tags.forEach(tag => {
-      const span = document.createElement('span');
-      span.textContent = tag;
-      modalTags.appendChild(span);
-    });
-
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeModal() {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  const projectCardsModal = document.querySelectorAll('.project-card');
-  projectCardsModal.forEach(card => {
-    card.addEventListener('click', function(e) {
-      const projectId = this.dataset.project;
-      if (projectId) {
-        e.stopPropagation();
-        openModal(projectId);
-      }
-    });
-  });
-
-  if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
-  if (modalClose) modalClose.addEventListener('click', closeModal);
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      closeModal();
-    }
-  });
-
-    /* ---------- Project Modal (16:9) ---------- */
+  /* ---------- Project Modal (16:9) ---------- */
   const modal = document.getElementById('projectModal');
   const modalOverlay = document.getElementById('modalOverlay');
   const modalClose = document.getElementById('modalClose');
@@ -397,7 +296,9 @@
   if (modalClose) modalClose.addEventListener('click', closeModal);
 
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Escape') {
+      closeModal();
+    }
   });
 
 })();
