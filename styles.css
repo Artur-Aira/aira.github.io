@@ -1261,7 +1261,7 @@ body {
   text-align: center;
   color: #fff;
   font-size: clamp(32px, 6vw, 80px);
-  font-weight: 900;
+  font-weight: 300;
   line-height: 1.1;
   letter-spacing: -0.02em;
   text-transform: uppercase;
