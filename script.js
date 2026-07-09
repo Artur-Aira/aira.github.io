@@ -206,7 +206,7 @@
     }
   };
 
-  function openModal(id) {
+    function openModal(id) {
     const data = projectsData[id];
     if (!data || !modal) return;
     currentImages = data.images || [data.image];
@@ -216,6 +216,12 @@
     modalTitle.textContent = data.title;
     modalDesc.textContent = data.description;
     modalTags.innerHTML = data.tags.map(t => `<span>${t}</span>`).join('');
+
+    // Показываем/скрываем полоску
+    if (modalGalleryBar) {
+      modalGalleryBar.style.display = currentImages.length > 1 ? 'flex' : 'none';
+    }
+
     updateGallery();
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -247,26 +253,30 @@
   if (modalClose)   modalClose.addEventListener('click', closeModal);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-  /* ---------- Галерея в модальном окне ---------- */
+   /* ---------- Галерея в модальном окне ---------- */
   let currentImageIndex = 0;
   let currentImages = [];
 
-  const modalPrev = document.getElementById('modalPrev');
-  const modalNext = document.getElementById('modalNext');
-  const modalCounter = document.getElementById('modalCounter');
+  const modalGalleryBar = document.getElementById('modalGalleryBar');
+
+  function renderDots() {
+    if (!modalGalleryBar) return;
+    const dots = modalGalleryBar.querySelectorAll('.modal-dot');
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentImageIndex);
+    });
+  }
 
   function updateGallery() {
-    if (currentImages.length <= 1) {
-      modalPrev.style.display = 'none';
-      modalNext.style.display = 'none';
-      modalCounter.style.display = 'none';
-    } else {
-      modalPrev.style.display = 'flex';
-      modalNext.style.display = 'flex';
-      modalCounter.style.display = 'block';
-      modalCounter.textContent = `${currentImageIndex + 1} / ${currentImages.length}`;
-    }
+    if (!modalImage) return;
     modalImage.src = currentImages[currentImageIndex];
+    renderDots();
+  }
+
+  function goToImage(index) {
+    if (index < 0 || index >= currentImages.length) return;
+    currentImageIndex = index;
+    updateGallery();
   }
 
   function nextImage() {
@@ -281,19 +291,19 @@
     updateGallery();
   }
 
-  if (modalPrev) modalPrev.addEventListener('click', function(e) {
-    e.stopPropagation();
-    prevImage();
-  });
-
-  if (modalNext) modalNext.addEventListener('click', function(e) {
-    e.stopPropagation();
-    nextImage();
-  });
+  // Обработчики для точек (полоски)
+  if (modalGalleryBar) {
+    modalGalleryBar.addEventListener('click', function(e) {
+      const dot = e.target.closest('.modal-dot');
+      if (!dot) return;
+      const index = parseInt(dot.dataset.index, 10);
+      if (!isNaN(index)) goToImage(index);
+    });
+  }
 
   // Клавиши ← → для навигации
   document.addEventListener('keydown', function(e) {
-    if (!modal.classList.contains('active')) return;
+    if (!modal || !modal.classList.contains('active')) return;
     if (e.key === 'ArrowLeft') prevImage();
     if (e.key === 'ArrowRight') nextImage();
   });
