@@ -300,15 +300,16 @@ body {
 }
 
 /* ---------- Белая зона с подписью ---------- */
-.hero-signature-wrap {
-  background: #fff;
+.hero-signature {
+  display: block;
   width: 100%;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 6%;
-  overflow: hidden;
+  max-width: 700px;
+  max-height: 180px;
+  height: auto;
+  mix-blend-mode: multiply;
+  user-select: none;
+  pointer-events: none;
+  object-fit: contain;
 }
 
 .hero-signature {
@@ -325,9 +326,12 @@ body {
 .hero-bottom {
   background: #000;
   width: 100%;
-  padding: 24px 0 20px;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: 24px var(--container-margin) 20px;
   overflow: hidden;
   flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 /* ---------- Строка-тэглайн с тире ---------- */
@@ -336,7 +340,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0;
-  padding: 0 48px;
+  padding: 0 106px;
   margin-bottom: 8px;
   white-space: nowrap;
   overflow: hidden;
