@@ -1240,6 +1240,7 @@ body {
   max-height: 72vh;
   min-height: 320px;
   overflow: hidden;
+  flex: 1 1 auto;
 }
 
 .hero-photo {
@@ -1248,25 +1249,26 @@ body {
   object-fit: cover;
   object-position: center 20%;
   display: block;
-  filter: brightness(0.78);
+  filter: brightness(0.75) contrast(1.05);
 }
 
 /* ---------- Текст поверх фото ---------- */
 .hero-overlay-text {
   position: absolute;
-  bottom: 18%;
+  bottom: 22%;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
   color: #fff;
-  font-size: clamp(20px, 2.8vw, 42px);
-  font-weight: 800;
-  line-height: 1.25;
-  letter-spacing: 0.01em;
+  font-size: clamp(32px, 6vw, 80px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
-  white-space: nowrap;
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 4px 40px rgba(0, 0, 0, 0.6);
   pointer-events: none;
+  width: 100%;
+  max-width: 900px;
 }
 
 /* ---------- Чёрная полоса с именем ---------- */
@@ -1276,14 +1278,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 24px 16px;
+  padding: 12px 24px 20px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .hero-name {
   display: block;
   color: #fff;
-  font-size: clamp(56px, 12.5vw, 192px);
+  font-size: clamp(48px, 12vw, 180px);
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 0.9;
@@ -1300,8 +1303,11 @@ body {
     max-height: 65vh;
   }
   .hero-overlay-text {
-    font-size: clamp(16px, 4vw, 28px);
-    bottom: 16%;
+    font-size: clamp(24px, 5vw, 42px);
+    bottom: 18%;
+  }
+  .hero-name {
+    font-size: clamp(36px, 10vw, 80px);
   }
 }
 
@@ -1311,12 +1317,14 @@ body {
     min-height: 260px;
   }
   .hero-overlay-text {
-    font-size: clamp(14px, 5vw, 22px);
-    bottom: 12%;
-    white-space: normal;
-    width: 90%;
+    font-size: clamp(18px, 7vw, 28px);
+    bottom: 14%;
+    line-height: 1.15;
   }
   .hero-name-bar {
-    padding: 6px 12px 12px;
+    padding: 8px 12px 14px;
+  }
+  .hero-name {
+    font-size: clamp(28px, 8vw, 48px);
   }
 }
