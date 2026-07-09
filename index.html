@@ -47,49 +47,49 @@
 
 <main id="main">
 
-<!-- ======================================================
+  <!-- ======================================================
      HERO BLOCK
      ====================================================== -->
 <section class="hero" id="top">
-  <!-- Фон -->
-  <div class="hero-bg">
-    <img src="assets/hero-bg.jpg" alt="Background" loading="lazy">
+
+  <!-- Навигация -->
+  <nav class="hero-nav">
+    <a href="#about">О СЕБЕ</a>
+    <a href="#work">ПРОЕКТЫ</a>
+    <a href="#contact">КОНТАКТЫ</a>
+  </nav>
+
+  <!-- Белая зона с подписью -->
+  <div class="hero-signature-wrap">
+    <img
+      class="hero-signature"
+      src="assets/signature.svg"
+      alt="Artur Aira — подпись"
+      loading="lazy"
+    >
   </div>
 
-  <!-- Чёрная полоса сверху с навигацией -->
-  <div class="hero-top-bar">
-    <nav class="hero-nav">
-      <a href="#about">О СЕБЕ</a>
-      <a href="#work">ПРОЕКТЫ</a>
-      <a href="#contact">КОНТАКТЫ</a>
-    </nav>
-  </div>
-
-  <!-- Основной текст -->
-  <div class="hero-center">
-    <h1 class="hero-title">
-      <span class="hero-line">ДИЗАЙН,</span>
-      <span class="hero-line-wrapper">
-        <span class="hero-dash"></span>
-        <span class="hero-line">КОТОРЫЙ</span>
-        <span class="hero-dash"></span>
-      </span>
-      <span class="hero-line-wrapper">
-        <span class="hero-dash"></span>
-        <span class="hero-line">СПОСОБЕН</span>
-        <span class="hero-dash"></span>
-      </span>
-      <span class="hero-line">ИЗМЕНИТЬ ВСЕ!</span>
-    </h1>
-  </div>
-
-  <!-- Нижняя часть с лейблом -->
+  <!-- Чёрная нижняя зона -->
   <div class="hero-bottom">
-    <span class="hero-label">ПОРТФОЛИО</span>
+
+    <!-- Строка с тире: ДИЗАЙН, КОТОРЫЙ — СПОСОБЕН — ИЗМЕНИТЬ ВСЕ! -->
+    <div class="hero-tagline">
+      <span class="hero-tagline__word">ДИЗАЙН, КОТОРЫЙ</span>
+      <span class="hero-tagline__line" aria-hidden="true"></span>
+      <span class="hero-tagline__word">СПОСОБЕН</span>
+      <span class="hero-tagline__line" aria-hidden="true"></span>
+      <span class="hero-tagline__word">ИЗМЕНИТЬ ВСЕ!</span>
+    </div>
+
+    <!-- Огромное ПОРТФОЛИО -->
+    <div class="hero-title-wrap">
+      <h1 class="hero-title">ПОРТФОЛИО</h1>
+    </div>
+
   </div>
+
 </section>
 <!-- ====================================================== -->
-
 
   <!-- ABOUT -->
   <section class="about" id="about">
