@@ -109,7 +109,7 @@ body {
   left: 0;
   right: 0;
   z-index: 200;
-  padding-top: 28px;
+  padding-top: 20px;
   padding-bottom: 12px;
   transition: transform 400ms var(--ease), background 400ms var(--ease), padding 300ms var(--ease);
   background: transparent;
@@ -278,33 +278,40 @@ body {
 }
 
 /* ============================================================
-   HERO BLOCK — чёрный, без подписи
+   HERO BLOCK — белый, с отступом от хедера
    ============================================================ */
 
 .hero {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   width: 100%;
-  min-height: 100svh;
-  background: #000;
+  min-height: calc(100svh - 80px);
+  background: #fff;
   font-family: var(--font-main);
-  padding-top: 120px; /* отступ под фиксированный header */
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
-/* ---------- Нижняя зона: тэглайн + заголовок ---------- */
-.hero-bottom {
+.hero-inner {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: var(--container-margin);
   width: 100%;
-  background: #000;
-  padding: 0 0 0;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ---------- Тэглайн с тире ---------- */
 .hero-tagline {
   display: flex;
   align-items: center;
-  padding: 0 var(--container-margin);
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+  max-width: 1200px;
   margin-bottom: 8px;
   white-space: nowrap;
   overflow: hidden;
@@ -314,8 +321,8 @@ body {
 }
 
 .hero-tagline__word {
-  color: #fff;
-  font-size: clamp(11px, 1.25vw, 18px);
+  color: #000;
+  font-size: clamp(14px, 1.6vw, 24px);
   font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -325,7 +332,7 @@ body {
 .hero-tagline__line {
   flex: 1;
   height: 1.5px;
-  background: #fff;
+  background: #000;
   margin: 0 16px;
   min-width: 24px;
 }
@@ -334,11 +341,13 @@ body {
 .hero-title-wrap {
   width: 100%;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .hero-title {
   display: block;
-  color: #fff;
+  color: #000;
   font-size: clamp(56px, 13.8vw, 210px);
   font-weight: 900;
   letter-spacing: -0.03em;
@@ -347,9 +356,9 @@ body {
   line-height: 0.88;
   white-space: nowrap;
   width: 100%;
-  padding: 0 8px;
-  margin: 0;
-  max-width: none;
+  max-width: 1200px;   /* ← строка 359 */
+  padding: 0 8px;      /* ← строка 360 */
+  margin: 0;           /* ← строка 361 — ВСЁ ПРАВИЛЬНО */
   opacity: 0;
   transform: translateY(40px);
   animation: heroFadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.05s forwards;
@@ -361,20 +370,20 @@ body {
 
 /* ---------- Адаптив hero ---------- */
 @media (max-width: 1024px) {
-  .hero { padding-top: 100px; }
+  .hero { min-height: calc(100svh - 60px); padding-top: 30px; padding-bottom: 30px; }
   .hero-tagline__line { margin: 0 10px; }
 }
 
 @media (max-width: 768px) {
-  .hero { padding-top: 80px; }
-  .hero-tagline { padding: 0 24px; margin-bottom: 4px; }
+  .hero { min-height: calc(100svh - 50px); padding-top: 20px; padding-bottom: 20px; }
+  .hero-tagline { margin-bottom: 4px; }
   .hero-tagline__line { margin: 0 8px; min-width: 12px; }
 }
 
 @media (max-width: 480px) {
-  .hero { padding-top: 72px; }
-  .hero-tagline { padding: 0 16px; margin-bottom: 2px; }
-  .hero-tagline__word { font-size: 8px; letter-spacing: 0.04em; }
+  .hero { min-height: calc(100svh - 40px); padding-top: 16px; padding-bottom: 16px; }
+  .hero-tagline { margin-bottom: 2px; }
+  .hero-tagline__word { font-size: 9px; letter-spacing: 0.04em; }
   .hero-tagline__line { margin: 0 6px; min-width: 6px; }
 }
 
