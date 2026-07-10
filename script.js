@@ -8,7 +8,7 @@
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ease = 'cubic-bezier(0.16,1,0.3,1)';
 
-  /* ---------- Header: hide/show + white-on-scroll ---------- */
+  /* ---------- Header: прячется при скролле вниз, появляется при скролле вверх ---------- */
   const header = document.getElementById('siteHeader');
   let lastScrollY = window.scrollY;
   let ticking = false;
@@ -81,7 +81,7 @@
 
   /* ---------- Scroll-triggered reveals ---------- */
   const revealTargets = document.querySelectorAll(
-    '.about-photo, .about-content, .experience-row, .case-meta, .case-title, .case-desc, .case-figure, .case-stats, .case-results, .project-card, .cta-band-text, .contact-links'
+    '.about-photo, .about-content, .case-meta, .case-title, .case-desc, .case-figure, .case-stats, .case-results, .project-card, .cta-band-text, .contact-links'
   );
   revealTargets.forEach(el => el.classList.add('fade-in-up'));
 
@@ -104,7 +104,6 @@
       });
     });
   }
-  staggerGroup('.experience-list', 60);
   staggerGroup('.project-grid', 80);
   staggerGroup('.case-figures', 100);
 
