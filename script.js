@@ -21,8 +21,6 @@
       document.body.classList.add('intro-active');
 
       const introVideo = document.getElementById('introVideo');
-      const introPlaceholder = document.getElementById('introPlaceholder');
-      const introSkip = document.getElementById('introSkip');
       let introHidden = false;
 
       const hideIntro = () => {
@@ -39,30 +37,16 @@
         setTimeout(() => { if (intro.parentNode) intro.remove(); }, 1200);
       };
 
-      // Подстраховка: если видео долго грузится/играет — не держим сайт закрытым дольше 6с
-      const maxWaitTimer = setTimeout(hideIntro, 6000);
-      let videoFailed = false;
-
-      const onVideoUnavailable = () => {
-        if (videoFailed || introVideo.classList.contains('is-ready')) return;
-        videoFailed = true;
-        setTimeout(hideIntro, 1600);
-      };
+      // Подстраховка: если видео не загрузится или зависнет — не держим сайт закрытым дольше 8с
+      const maxWaitTimer = setTimeout(hideIntro, 8000);
 
       introVideo.addEventListener('loadeddata', () => {
         introVideo.classList.add('is-ready');
-        if (introPlaceholder) introPlaceholder.style.opacity = '0';
         introVideo.play().catch(hideIntro);
       });
       introVideo.addEventListener('ended', hideIntro);
-      // Файл видео ещё не добавлен на сайт (или не загрузился) — показываем заставку и уходим на сайт
-      introVideo.addEventListener('error', onVideoUnavailable);
-      introVideo.addEventListener('stalled', onVideoUnavailable);
-      setTimeout(() => {
-        if (introVideo.readyState === 0) onVideoUnavailable();
-      }, 1200);
-
-      if (introSkip) introSkip.addEventListener('click', hideIntro);
+      // Видео недоступно — сразу показываем сайт
+      introVideo.addEventListener('error', hideIntro);
     }
   }
 
